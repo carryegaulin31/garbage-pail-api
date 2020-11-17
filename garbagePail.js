@@ -1,4 +1,4 @@
-const card = [{
+const cards = [{
   name: 'Nasty Nick',
   Series: 1,
   releaseDate: '1985',
@@ -492,4 +492,4 @@ const card = [{
   aOrB: 'B',
 }]
 
-module.exports = card
+module.exports = cards

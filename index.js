@@ -1,9 +1,9 @@
 const express = require('express')
 // const bodyParser = require('body-parser')
-const { getAllCards } = require('./controllers/gpk')
+const { getAllCards } = require('./controllers/garbagePail')
 const app = express()
 
-app.get('/garbageInfo', getAllCards)
+app.get('/garbagePail', getAllCards)
 
 // app.post('/', bodyParser.json())
 
