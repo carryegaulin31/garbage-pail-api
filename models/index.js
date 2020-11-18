@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize')
-const kidsModel = require('./kids')
+const kidsModel = require('./GarbagePail')
 
 const connection = new Sequelize('GarbagePail', 'GarbagePail', 'Dalla$$', {
   host: 'localhost', dialect: 'mysql'
 })
 
-const Kids = kidsModel(connection, Sequelize)
+const kids = kidsModel(connection, Sequelize)
 
-module.exports = { Kids }
+module.exports = { kids }

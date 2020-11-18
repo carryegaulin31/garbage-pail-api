@@ -1,7 +1,14 @@
-const cards = require('../garbagePail')
+const kids = require('../garbagePail')
+const models = require('../models')
 
-const getAllCards = (request, response) => {
-  return response.send(cards)
+const getAllCards = async (request, response) => {
+  try {
+    const cards = await models.kids.findAll()
+
+    return response.send(cards)
+  } catch (error) {
+    return response.status(404).send('Sorry not found')
+  }
 }
 
 
