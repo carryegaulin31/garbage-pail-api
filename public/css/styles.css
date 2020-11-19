@@ -1,0 +1,21 @@
+body {
+  background-color: black;
+  font-size: 24px;
+  color: yellow;
+}
+
+body {
+  background-image: url('https://i.pinimg.com/originals/f6/08/c5/f608c539c3ba9681320571d72fd8a6ca.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  justify-content: space-evenly;
+  background-position: center;
+
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}

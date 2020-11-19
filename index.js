@@ -1,11 +1,18 @@
 const express = require('express')
-// const bodyParser = require('body-parser')
+
 const { getAllCards } = require('./controllers/garbagePail')
 const app = express()
 
+app.use(express.static('public'))
+
+app.set('view engine', 'pug')
+
+app.get('/', (request, response) => {
+  return response.render('index')
+})
+
 app.get('/garbagePail', getAllCards)
 
-// app.post('/', bodyParser.json())
 
 
 
