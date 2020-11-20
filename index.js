@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { getAllCards } = require('./controllers/garbagePail')
+const { getAllCards, getKidByName } = require('./controllers/garbagePail')
 const app = express()
 
 app.use(express.static('public'))
@@ -12,6 +12,8 @@ app.get('/', (request, response) => {
 })
 
 app.get('/garbagePail', getAllCards)
+
+app.get('/garbagePail/:input', getKidByName)
 
 
 
