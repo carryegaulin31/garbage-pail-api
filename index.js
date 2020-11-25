@@ -1,6 +1,6 @@
 const express = require('express')
-
-const { getAllCards, getKidByName } = require('./controllers/garbagePail')
+const bodyParser = require('body-parser')
+const { getAllCards, getKidByName, saveNewKid } = require('./controllers/garbagePail')
 const app = express()
 
 app.use(express.static('public'))
@@ -13,10 +13,10 @@ app.get('/', (request, response) => {
 
 app.get('/garbagePail', getAllCards)
 
-app.get('/garbagePail/:input', getKidByName)
+app.get('/garbagePail/:name', getKidByName)
 
 
-
+app.post('/garbagePail', bodyParser.json(), saveNewKid)
 
 
 
