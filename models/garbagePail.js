@@ -11,7 +11,7 @@ const kids = (connection, Sequelize) => {
       attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] }
     }
   },
-  { paranoid: true })
+    { paranoid: true })
 }
 
 module.exports = kids

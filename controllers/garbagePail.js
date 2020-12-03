@@ -15,9 +15,11 @@ const getKidByName = async (request, response) => {
 
     const kid = await models.kids.findOne({ where: { name } })
 
-    return response.send(kid)
+    return kid
+      ? response.send(kid)
+      : response.status(404).send('Sorry not found')
   } catch (error) {
-    return response.status(404).send('Sorry not found')
+    return response.status(500).send('Unable to retrieve')
   }
 }
 
@@ -30,7 +32,9 @@ const saveNewKid = async (request, response) => {
     return response.status(400).send('The following fields are required: name, movie, slug')
   }
 
-  const newKid = await models.villains.create({ name, series, releaseDate, cardNumber, AorB })
+  const newKid = await models.villains.create({
+    name, series, releaseDate, cardNumber, AorB
+  })
 
   return response.status(201).send(newKid)
 }
