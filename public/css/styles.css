@@ -2,13 +2,12 @@ body {
   background-color: black;
   font-size: 24px;
   color: yellow;
-}
-
-body {
-  background-image: url('https://i.pinimg.com/originals/f6/08/c5/f608c539c3ba9681320571d72fd8a6ca.png');
-  height: 925px; 
-  background-position: center center;
-  background-repeat: no-repeat; 
+  background-image: url('/images/background-image.png');
+  height: 100%;
+  background-size: 25vw;
+  background-position: center 90%;
+  top: 125px;
+  background-repeat: no-repeat;
   margin: 20px;
 }
 
@@ -26,10 +25,14 @@ a:visited {
   width: 60%;
 }
 
-h2, h3, hr {
-  text-decoration: underline;
+hr {
+  color: navy;
+}
+
+h2, h3 {
+  text-decoration: underline; 
   font-stretch: extra-expanded;
-  font-size: 50px;
+  font-size: 2em;
   display: inline;
 }
 
@@ -47,6 +50,8 @@ li {
   font-size: x-large;
   color: rgb(255, 115, 0);
 }
+
+
 
 
 
