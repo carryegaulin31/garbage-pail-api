@@ -32,7 +32,7 @@ const saveNewKid = async (request, response) => {
     return response.status(400).send('The following fields are required: name, movie, slug')
   }
 
-  const newKid = await models.villains.create({
+  const newKid = await models.kids.create({
     name, series, releaseDate, cardNumber, AorB
   })
 
