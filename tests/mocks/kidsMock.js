@@ -21,4 +21,4 @@ const singleKid = {
   cardNo: '25'
 }
 
-module.exports = { heroesList, singleHero }
+module.exports = { kidsList, singleKid }

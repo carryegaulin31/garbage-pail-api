@@ -1,6 +1,6 @@
 const models = require('../models')
 
-const getAllCards = async (request, response) => {
+const getAllKids = async (request, response) => {
   try {
     const kids = await models.kids.findAll()
 
@@ -39,4 +39,4 @@ const saveNewKid = async (request, response) => {
   return response.status(201).send(newKid)
 }
 
-module.exports = { getAllCards, getKidByName, saveNewKid }
+module.exports = { getAllKids, getKidByName, saveNewKid }
