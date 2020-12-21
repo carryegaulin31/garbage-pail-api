@@ -23,16 +23,22 @@ describe('Controllers - garbagePail', () => {
   })
 
   describe('getKidByName', () => {
-     it('retrieves the kid associated with the provided slug from the database and calls response.send with it', async () => {
-       const request = { params: { slug: 'Scary Carrie' } }
-       const stubbedSend = sinon.stub()
-       const response = { send: stubbedSend }
-       const stubbedFindOne = sinon.stub(models.kids, 'findOne').returns(singleKid)
- 
-       await getKidByName(request, response)
-     })
-   })
-   
+    it('retrieves the kid associated with the provided slug from the database and calls response.send with it', async () => {
+      const request = { params: { slug: 'Scary Carrie' } }
+      const stubbedSend = sinon.stub()
+      const response = { send: stubbedSend }
+      const stubbedFindOne = sinon.stub(models.kids, 'findOne').returns(singleKid)
+
+      await getKidByName(request, response)
+    })
+  })
+
 
   describe('saveNewKid', () => { })
+  it('accepts new kid details and saves them as a new kid, returning the saved record with a 201 status', async () => {
+    const request = {}
+    const response = {}
+
+    await saveNewKid(request, response)
+  })
 })
