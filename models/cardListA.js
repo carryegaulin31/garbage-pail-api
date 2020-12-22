@@ -1,9 +1,9 @@
-CREATE TABLE cardListA (
-  id INT auto_increment,
-  name VARCHAR(255) NOT NULL,
-  list ENUM('A', 'B'),
-  createdAt DATETIME DEFAULT NOW(),
-  updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
-  deletedAt DATETIME,
-  PRIMARY KEY(id)
-);
+const cardListA = (connection, Sequelize) => {
+  return connection.define('cardListA', {
+    id: { type: Sequelize.INTEGER, auto_increment: true, primaryKey: true },
+    name: { type: Sequelize.STRING, NOTNULL },
+    list: { type: Sequelize.STRING },
+  }, { paranoid: true })
+}
+
+module.exports = cardListA
