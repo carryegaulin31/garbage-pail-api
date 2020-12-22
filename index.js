@@ -11,7 +11,7 @@ app.get('/', (request, response) => {
   return response.render('index')
 })
 
-app.get('/garbagePail', getAllKids)
+app.get('/', getAllKids)
 
 app.get('/garbagePail/:name', getKidByName)
 
