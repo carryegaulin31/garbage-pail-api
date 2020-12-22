@@ -1,10 +1,10 @@
-CREATE TABLE seriesData (
-  id INT auto_increment,
-  seriesNo INT NOT NULL,
-  releaseDate INT NOT NULL,
-  cardNo INT NOT NULL,
-  createdAt DATETIME DEFAULT NOW(),
-  updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
-  deletedAt DATETIME,
-  PRIMARY KEY(id)
-);
+const seriesData = (connection, Sequelize) => {
+  return connection.define('seriesData', {
+    id: { type: Sequelize.INTEGER, auto_increment: true, primaryKey: true },
+    seriesNo: { type: Sequelize.INTEGER, NOTNULL },
+    releaseDate: { type: Sequelize.INTEGER, NOTNULL },
+    cardNo: { type: Sequelize.INTEGER, NOTNULL},
+  }, { paranoid: true })
+}
+
+module.exports = seriesData
