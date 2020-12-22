@@ -24,7 +24,7 @@ const SeriesData = SeriesDataModel(connection, Sequelize)
 const CardASeriesLinking = CardASeriesLinkingModel(connection, Sequelize, cardListA, seriesData)
 const CardBSeriesLinking = CardBSeriesLinkingModel(connection, Sequelize, cardListB, seriesData)
 
-cardASeriesLinking.belongTo(cardListA)
+cardASeriesLinking.belongsTo(cardListA)
 cardASeriesLinking.hasMany(seriesData)
 cardBSeriesLinking.belongTo(cardListB)
 CardBSeriesLinking.hasMany(seriesData) //why is this one blue?!
