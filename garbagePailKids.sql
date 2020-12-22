@@ -48,7 +48,7 @@ CREATE TABLE cardASeriesLinking (
   FOREIGN KEY (seriesDataId) REFERENCES seriesData(id)
 );
 
-CREATE TABLE cardASeriesLinking (
+CREATE TABLE cardBSeriesLinking (
   cardListBId INT,
   seriesDataId INT
   createdAt DATETIME DEFAULT NOW(),
