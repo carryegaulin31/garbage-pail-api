@@ -1,9 +1,11 @@
-CREATE TABLE cardASeriesLinking (
-  cardListAId INT,
-  seriesDataId INT
-  createdAt DATETIME DEFAULT NOW(),
-  updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
-  deletedAt DATETIME,
-  FOREIGN KEY (cardListAId) REFERENCES cardListA(id),
-  FOREIGN KEY (seriesDataId) REFERENCES seriesData(id)
-);
+const { INTEGER } = require("sequelize/types")
+
+const cardASeriesLinking = (connection, Sequelize, cardListA, seriesData)
+  => {
+  return connection.define('cardASeriesLinking', {
+    cardListAId: { type: Sequelize.INTEGER, references: { model: cardListA, key: 'id ' } },
+    seriesDataId: { type: Sequelize.INTEGER, references: { model: seriesData, key: 'id' } },
+  }, { paranoid: true })
+}
+
+module.exports = cardASeriesLinking
