@@ -10,7 +10,7 @@ USE GPK;
 CREATE TABLE cardListA (
   id INT auto_increment,
   name VARCHAR(255) NOT NULL,
-  list ENUM('A', 'B'),
+  list ENUM('A', 'B') NOT NULL,
   createdAt DATETIME DEFAULT NOW(),
   updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
   deletedAt DATETIME,
@@ -20,7 +20,7 @@ CREATE TABLE cardListA (
 CREATE TABLE cardListB (
   id INT auto_increment,
   name VARCHAR(255) NOT NULL,
-  list ENUM('A', 'B'),
+  list ENUM('A', 'B') NOT NULL,
   createdAt DATETIME DEFAULT NOW(),
   updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
   deletedAt DATETIME,
@@ -48,7 +48,7 @@ CREATE TABLE cardASeriesLinking (
   FOREIGN KEY (seriesDataId) REFERENCES seriesData(id)
 );
 
-CREATE TABLE cardBSeriesLinking (
+CREATE TABLE cardSeriesLinking (
   cardListBId INT,
   seriesDataId INT
   createdAt DATETIME DEFAULT NOW(),
@@ -58,7 +58,7 @@ CREATE TABLE cardBSeriesLinking (
   FOREIGN KEY (seriesDataId) REFERENCES seriesData(id)
 );
 
-INSERT INTO cardListA (name, list) VALUES ("Nasty Nick", "A");
+INSERT INTO cardListA (name, list) VALUES ("Nasty Nick", 'A');
 INSERT INTO cardListA (name, list) VALUES ("Junkfood John", "A");
 INSERT INTO cardListA (name, list) VALUES ("Up Chuck", "A");
 INSERT INTO cardListA (name, list) VALUES ("Fryin Brian", "A");
