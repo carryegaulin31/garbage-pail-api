@@ -1,5 +1,5 @@
-const seriesData = (connection, Sequelize) => {
-  return connection.define('seriesData', {
+const seriesDatas = (connection, Sequelize) => {
+  return connection.define('seriesDatas', {
     id: { type: Sequelize.INTEGER, auto_increment: true, primaryKey: true },
     seriesNo: { type: Sequelize.INTEGER },
     releaseDate: { type: Sequelize.INTEGER },
@@ -7,4 +7,4 @@ const seriesData = (connection, Sequelize) => {
   }, { paranoid: true })
 }
 
-module.exports = seriesData
+module.exports = seriesDatas

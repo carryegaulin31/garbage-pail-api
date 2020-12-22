@@ -1,4 +1,4 @@
-const cardListB = (connection, Sequelize) => {
+const cardListBs = (connection, Sequelize) => {
   return connection.define('cardListB', {
     id: { type: Sequelize.INTEGER, auto_increment: true, primaryKey: true },
     name: { type: Sequelize.STRING },
@@ -6,4 +6,4 @@ const cardListB = (connection, Sequelize) => {
   }, { paranoid: true })
 }
 
-module.exports = cardListB
+module.exports = cardListBs

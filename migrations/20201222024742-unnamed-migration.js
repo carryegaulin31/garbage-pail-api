@@ -11,7 +11,7 @@ module.exports = {
       },
       deletedAt: { type: Sequelize.DATE },
     })
-    await queryInterface.createTable('cardListB', {
+    await queryInterface.createTable('cardListBs', {
       id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
       name: { type: Sequelize.STRING },
       list: { type: Sequelize.STRING },
@@ -22,7 +22,7 @@ module.exports = {
       },
       deletedAt: { type: Sequelize.DATE },
     })
-    await queryInterface.createTable('seriesData', {
+    await queryInterface.createTable('seriesDatas', {
       id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
       seriesNo: { type: Sequelize.INTEGER },
       releaseDate: { type: Sequelize.INTEGER },
@@ -35,7 +35,7 @@ module.exports = {
       deletedAt: { type: Sequelize.DATE },
     })
 
-    await queryInterface.createTable('cardASeriesLinking', {
+    await queryInterface.createTable('cardASeriesLinkings', {
       cardListAId: { type: Sequelize.INTEGER, references: { model: 'cardListA', key: 'id' } },
       seriesDataId: { type: Sequelize.INTEGER, references: { model: 'seriesData', key: 'id' } },
       createdAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
@@ -46,7 +46,7 @@ module.exports = {
       deletedAt: { type: Sequelize.DATE },
     })
 
-    return queryInterface.createTable('cardBSeriesLinking', {
+    return queryInterface.createTable('cardBSeriesLinkings', {
       cardListBId: { type: Sequelize.INTEGER, references: { model: 'cardListB', key: 'id' } },
       seriesDataId: { type: Sequelize.INTEGER, references: { model: 'seriesData', key: 'id' } },
       createdAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
@@ -59,10 +59,10 @@ module.exports = {
   },
 
   down: async (queryInterface) => {
-    await queryInterface.dropTable('cardBSeriesLinking')
-    await queryInterface.dropTable('cardASeriesLinking')
-    await queryInterface.dropTable('seriesData')
-    await queryInterface.dropTable('cardListB')
+    await queryInterface.dropTable('cardBSeriesLinkings')
+    await queryInterface.dropTable('cardASeriesLinkings')
+    await queryInterface.dropTable('seriesDatas')
+    await queryInterface.dropTable('cardListBs')
 
     return queryInterface.dropTable('cardListA')
   }

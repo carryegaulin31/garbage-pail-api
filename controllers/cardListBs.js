@@ -1,7 +1,7 @@
 const models = require('../models')
 
 const getAllBKids = async (request, response) => {
-  const allBKids = await models.CardListB.findAll()
+  const allBKids = await models.CardListBs.findAll()
 
   return allBKids
     ? response.send(allBKids)
@@ -9,7 +9,7 @@ const getAllBKids = async (request, response) => {
 }
 
 const getBListWithSeriesData = async (request, response) => {
-  const bListWithSeriesData = await models.CardListB.findAll({
+  const bListWithSeriesData = await models.CardListBs.findAll({
 
     include: [{
       model: models.SeriesData,
