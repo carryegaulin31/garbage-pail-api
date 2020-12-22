@@ -27,7 +27,7 @@ const CardBSeriesLinking = CardBSeriesLinkingModel(connection, Sequelize, cardLi
 cardASeriesLinking.belongTo(cardListA)
 cardASeriesLinking.hasMany(seriesData)
 cardBSeriesLinking.belongTo(cardListB)
-CardBSeriesLinking.hasMany(seriesData)
+CardBSeriesLinking.hasMany(seriesData) //why is this one blue?!
 
 
 module.exports = {
