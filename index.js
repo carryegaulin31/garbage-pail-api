@@ -11,12 +11,12 @@ app.get('/', (request, response) => {
   return response.render('index')
 })
 
-app.get('/', getAllKids)
+app.get('/garbagepail', getAllKids)
 
-app.get('/garbagePail/:name', getKidByName)
+// app.get('/garbagePail/:name', getKidByName)
 
 
-app.post('/garbagePail', bodyParser.json(), saveNewKid)
+// app.post('/garbagePail', bodyParser.json(), saveNewKid)
 
 
 app.listen(1337, () => {

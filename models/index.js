@@ -24,10 +24,10 @@ const SeriesData = SeriesDataModel(connection, Sequelize)
 const CardASeriesLinking = CardASeriesLinkingModel(connection, Sequelize, cardListA, seriesData)
 const CardBSeriesLinking = CardBSeriesLinkingModel(connection, Sequelize, cardListB, seriesData)
 
-cardASeriesLinking.belongsTo(cardListA)
+/* cardASeriesLinking.belongsTo(cardListA)
 cardASeriesLinking.hasMany(seriesData)
 cardBSeriesLinking.belongTo(cardListB)
-CardBSeriesLinking.hasMany(seriesData) //why is this one blue?!
+CardBSeriesLinking.hasMany(seriesData) //why is this one blue?! */
 
 
 module.exports = {
@@ -36,5 +36,5 @@ module.exports = {
   SeriesData,
   CardASeriesLinking,
   CardBSeriesLinking,
-  Op: Sequelize.Op,
+// Op: Sequelize.Op,
 }
