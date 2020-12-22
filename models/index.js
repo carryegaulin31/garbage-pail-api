@@ -8,8 +8,8 @@ const CardBSeriesLinkingModel = require('./cardBSeriesLinking')
 const cardListA = require('./cardListA')
 const seriesData = require('./seriesData')
 const cardListB = require('./cardListB')
-const cardASeriesLinking = require('./cardASeriesLinking')
-const cardBSeriesLinking = require('./cardBSeriesLinking')
+// const cardASeriesLinking = require('./cardASeriesLinking') what is the issue with these?!?
+// const cardBSeriesLinking = require('./cardBSeriesLinking')
 
 const environment = process.env.NODE_ENV || 'development'
 const config = allConfigs[environment]
@@ -24,8 +24,12 @@ const SeriesData = SeriesDataModel(connection, Sequelize)
 const CardASeriesLinking = CardASeriesLinkingModel(connection, Sequelize, cardListA, seriesData)
 const CardBSeriesLinking = CardBSeriesLinkingModel(connection, Sequelize, cardListB, seriesData)
 
-SeriesData.belongsTo(CardListA, { through: CardASeriesLinking })
-SeriesData.belongsTo(CardListB, { through: CardBSeriesLinking })
+CardListA.belongsToMany(SeriesData, { through: CardASeriesLinking })
+CardListB.belongsToMany(SeriesData, { through: CardBSeriesLinking })
+CardASeriesLinking.belongsTo(CardListA)
+CardBSeriesLinking.belongsTo(CardListB)
+
+
 
 
 
@@ -35,5 +39,5 @@ module.exports = {
   SeriesData,
   CardASeriesLinking,
   CardBSeriesLinking,
-// Op: Sequelize.Op,
+  // Op: Sequelize.Op,
 }

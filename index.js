@@ -1,7 +1,7 @@
 const express = require('express')
 // const bodyParser = require('body-parser')
 const { getAllAKids } = require('./controllers/cardListA')
-// const { getBListWithSeriesData } = require('./controllers/cardListB')
+const { getBListWithSeriesData, getAllBKids } = require('./controllers/cardListB')
 // const { getAllSeriesData } = require('./controllers/seriesData')
 const app = express()
 
@@ -13,8 +13,9 @@ app.get('/', (request, response) => {
   return response.render('index')
 })
 
-app.get('/A', getAllAKids)
-// app.get('/B/:id', getBListWithSeriesData)
+app.get('/AList', getAllAKids)
+app.get('/BList')
+app.get('/BListSeries', getBListWithSeriesData)
 // app.get('/series', getAllSeriesData)
 
 // app.get('/garbagePail/:name', getKidByName)
