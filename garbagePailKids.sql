@@ -38,14 +38,22 @@ CREATE TABLE seriesData (
   PRIMARY KEY(id)
 );
 
-CREATE TABLE cardListLinking (
+CREATE TABLE cardASeriesLinking (
   cardListAId INT,
+  seriesDataId INT
+  createdAt DATETIME DEFAULT NOW(),
+  updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
+  deletedAt DATETIME,
+  FOREIGN KEY (cardListAId) REFERENCES cardListA(id),
+  FOREIGN KEY (seriesDataId) REFERENCES seriesData(id)
+);
+
+CREATE TABLE cardASeriesLinking (
   cardListBId INT,
   seriesDataId INT
   createdAt DATETIME DEFAULT NOW(),
   updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
   deletedAt DATETIME,
-  FOREIGN KEY (cardListAId) REFERENCES cardListAId(id),
   FOREIGN KEY (cardListBId) REFERENCES cardListB(id),
   FOREIGN KEY (seriesDataId) REFERENCES seriesData(id)
 );
@@ -216,86 +224,88 @@ INSERT INTO seriesData (seriesNo, releaseDate, cardNo) VALUES ("1", "1985", "39"
 INSERT INTO seriesData (seriesNo, releaseDate, cardNo) VALUES ("1", "1985", "40");
 INSERT INTO seriesData (seriesNo, releaseDate, cardNo) VALUES ("1", "1985", "41");
 
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
-INSERT INTO cardListLinking (cardListAId, cardListBId, seriesDataId) VALUES (, , );
 
+
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (1, 1);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (2, 2 );
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (3, 3 );
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (4, 4);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (5, 5 );
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (6, 6);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (7, 7);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (8, 8);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (9, 9);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (10, 10);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (11, 11);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (12, 12);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (13, 13);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (14, 14);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (15, 15);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (16, 16);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (17, 17);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (18, 18);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (19, 19);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (20, 20);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (21, 21);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (22, 22);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (23, 23);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (24, 24);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (25, 25);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (26, 26);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (27, 27);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (28, 28);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (29, 29);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (30, 30);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (31, 31);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (32, 32);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (33, 33);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (34, 34);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (35, 35);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (36, 36);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (37, 37);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (38, 38);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (39, 39);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (40, 40);
+INSERT INTO cardASeriesLinking (cardListAId, seriesDataId) VALUES (41, 41);
+
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (1, 42);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (2, 43 );
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (3, 44);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (4, 45);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (5, 46);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (6, 47);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (7, 48);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (8, 49);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (9, 50);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (10, 51);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (11, 52);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (12, 53);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (13, 54);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (14, 55);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (15, 56);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (16, 57);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (17, 58);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (18, 59);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (19, 60);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (20, 61);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (21, 62);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (22, 63);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (23, 64);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (24, 65);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (25, 66);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (26, 67);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (27, 68);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (28, 69);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (29, 70);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (30, 71);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (31, 72);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (32, 73);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (33, 74);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (34, 75);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (35, 76);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (36, 77);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (37, 78);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (38, 79);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (39, 80);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (40, 81);
+INSERT INTO cardBSeriesLinking (cardListBid, seriesDataId) VALUES (41, 82);
