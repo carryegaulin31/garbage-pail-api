@@ -1,16 +1,12 @@
 DROP DATABASE GPK;
 CREATE DATABASE GPK;
 
-CREATE USER 'gpk'@'localhost' IDENTIFIED BY 'gpk';
-
-GRANT ALL ON novels.* TO 'gpk'@'localhost';
-
 USE GPK;
 
 CREATE TABLE cardListA (
   id INT auto_increment,
   name VARCHAR(255) NOT NULL,
-  list ENUM('A', 'B') NOT NULL,
+  list VARCHAR(255) NOT NULL,
   createdAt DATETIME DEFAULT NOW(),
   updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
   deletedAt DATETIME,
@@ -20,7 +16,7 @@ CREATE TABLE cardListA (
 CREATE TABLE cardListB (
   id INT auto_increment,
   name VARCHAR(255) NOT NULL,
-  list ENUM('A', 'B') NOT NULL,
+  list VARCHAR(255) NOT NULL,
   createdAt DATETIME DEFAULT NOW(),
   updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
   deletedAt DATETIME,

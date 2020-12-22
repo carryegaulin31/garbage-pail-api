@@ -1,19 +1,11 @@
 const models = require('../models')
 
-const getAllKids = async (request, response) => {
-  const { id } = request.params
-  const allKids = await models.CardListA.findAll({
-    where: { id },
-    include: [{
-      model: models.CardListB,
-    }]
-  })
+const getAllAKids = async (request, response) => {
+  const allAKids = await models.CardListA.findAll()
 
-  return allKids
-    ? response.send(allKids)
+  return allAKids
+    ? response.send(allAKids)
     : response.sendStatus(404)
 }
 
-
-
-module.exports = { getAllKids }
+module.exports = { getAllAKids }
