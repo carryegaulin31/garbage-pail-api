@@ -12,7 +12,7 @@ const getBListWithSeriesData = async (request, response) => {
   const bListWithSeriesData = await models.CardListBs.findAll({
 
     include: [{
-      model: models.SeriesData,
+      model: models.SeriesDatas,
     }]
   })
 

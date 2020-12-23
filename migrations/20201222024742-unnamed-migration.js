@@ -37,7 +37,7 @@ module.exports = {
 
     await queryInterface.createTable('cardASeriesLinkings', {
       cardListAId: { type: Sequelize.INTEGER, references: { model: 'cardListA', key: 'id' } },
-      seriesDataId: { type: Sequelize.INTEGER, references: { model: 'seriesData', key: 'id' } },
+      seriesDatasId: { type: Sequelize.INTEGER, references: { model: 'seriesDatas', key: 'id' } },
       createdAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
       updatedAt: {
         type: Sequelize.DATE,
@@ -47,8 +47,8 @@ module.exports = {
     })
 
     return queryInterface.createTable('cardBSeriesLinkings', {
-      cardListBId: { type: Sequelize.INTEGER, references: { model: 'cardListB', key: 'id' } },
-      seriesDataId: { type: Sequelize.INTEGER, references: { model: 'seriesData', key: 'id' } },
+      cardListBsId: { type: Sequelize.INTEGER, references: { model: 'cardListBs', key: 'id' } },
+      seriesDatasId: { type: Sequelize.INTEGER, references: { model: 'seriesDatas', key: 'id' } },
       createdAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
       updatedAt: {
         type: Sequelize.DATE,

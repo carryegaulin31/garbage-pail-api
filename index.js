@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const { getAllAKids } = require('./controllers/cardListA')
-const { getAllBKids } = require('./controllers/cardListBs')
+const { getAllBKids, getBListWithSeriesData } = require('./controllers/cardListBs')
 const { getAllSeriesData } = require('./controllers/seriesDatas')
 const app = express()
 
@@ -15,6 +15,7 @@ app.get('/', (request, response) => {
 
 app.get('/aList', getAllAKids)
 app.get('/bList', getAllBKids)
+app.get('/blistSeries', getBListWithSeriesData)
 app.get('/series', getAllSeriesData)
 
 

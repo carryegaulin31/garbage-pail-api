@@ -2,14 +2,11 @@ const Sequelize = require('sequelize')
 const allConfigs = require('../config/sequelize')
 const CardListAModel = require('./cardListA')
 const CardListBModel = require('./cardListBs')
-const SeriesDataModel = require('./seriesData')
+const SeriesDataModel = require('./seriesDatas')
 const CardASeriesLinkingModel = require('./cardASeriesLinkings')
 const CardBSeriesLinkingModel = require('./cardBSeriesLinkings')
-const cardListA = require('./cardListA')
-const seriesDatas = require('./seriesData')
-const cardListBs = require('./cardListBs')
-const cardASeriesLinkings = require('./cardASeriesLinkings')
-const cardBSeriesLinkings = require('./cardBSeriesLinkings')
+
+
 
 const environment = process.env.NODE_ENV || 'development'
 const config = allConfigs[environment]
@@ -21,8 +18,8 @@ const connection = new Sequelize(config.database, config.username, config.passwo
 const CardListA = CardListAModel(connection, Sequelize)
 const CardListBs = CardListBModel(connection, Sequelize)
 const SeriesDatas = SeriesDataModel(connection, Sequelize)
-const CardASeriesLinkings = CardASeriesLinkingModel(connection, Sequelize, cardListA, seriesDatas)
-const CardBSeriesLinkings = CardBSeriesLinkingModel(connection, Sequelize, cardListBs, seriesDatas)
+const CardASeriesLinkings = CardASeriesLinkingModel(connection, Sequelize, CardListA, SeriesDatas)
+const CardBSeriesLinkings = CardBSeriesLinkingModel(connection, Sequelize, CardListBs, SeriesDatas)
 
 CardListA.belongsToMany(SeriesDatas, { through: CardASeriesLinkings })
 CardListBs.belongsToMany(SeriesDatas, { through: CardBSeriesLinkings })
