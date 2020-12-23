@@ -54,6 +54,18 @@ CREATE TABLE cardBSeriesLinkingss (
   FOREIGN KEY (seriesDataId) REFERENCES seriesDatas(id)
 );
 
+CREATE TABLE userTables (
+  id INT auto_increment,
+  name VARCHAR(255) NOT NULL,
+  list VARCHAR(255) NOT NULL,
+  seriesNo INT,
+  releaseDate INT,
+  cardNo INT,
+  createdAt DATETIME DEFAULT NOW(),
+  updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
+  deletedAt DATETIME,
+);
+
 INSERT INTO cardListA (name, list) VALUES ("Nasty Nick", 'A');
 INSERT INTO cardListA (name, list) VALUES ("Junkfood John", "A");
 INSERT INTO cardListA (name, list) VALUES ("Up Chuck", "A");

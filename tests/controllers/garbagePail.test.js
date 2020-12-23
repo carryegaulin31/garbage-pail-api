@@ -2,16 +2,17 @@ const chai = require('chai')
 const sinon = require('sinon')
 const sinonChai = require('sinon-chai')
 const { describe, it } = require('mocha')
-const { kidsList, singleKid } = require('../mocks/kidsMock')
-const { getAllKids, getKidByName, saveNewKid } = require('../../controllers/garbagePail')
+const { kidsList, singleKid } = require('../mocks/garbagePail')
+const { getAllAKids, getBListWithSeriesDat, saveNewKid } = require('../../controllers/garbagePail')
 
 chai.use(sinonChai)
 const { expect } = chai
+const models = require('../models')
 
 describe('Controllers - garbagePail', () => {
   describe('getAllKids', () => {
     it('retrieves a list of kids from the database and calls response.send() with the list', async () => {
-      const stubbedFindAll = sinon.stub(models.kids, 'findAll').returns(kidsList)
+      const stubbedFindAll = sinon.stub(models.GPK, 'findAll').returns(kidsList)
       const stubbedSend = sinon.stub()
       const response = { send: stubbedSend }
 
@@ -27,7 +28,7 @@ describe('Controllers - garbagePail', () => {
       const request = { params: { slug: 'Scary Carrie' } }
       const stubbedSend = sinon.stub()
       const response = { send: stubbedSend }
-      const stubbedFindOne = sinon.stub(models.kids, 'findOne').returns(singleKid)
+      const stubbedFindOne = sinon.stub(models.GPK, 'findOne').returns(singleKid)
 
       await getKidByName(request, response)
     })

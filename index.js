@@ -1,6 +1,6 @@
 const express = require('express')
-const bodyParser = require('body-parser')
-const { getAllAKids } = require('./controllers/cardListA')
+// const bodyParser = require('body-parser')
+const { getAllAKids, saveNewKid } = require('./controllers/cardListA')
 const { getAllBKids, getBListWithSeriesData } = require('./controllers/cardListBs')
 const { getAllSeriesData } = require('./controllers/seriesDatas')
 const app = express()

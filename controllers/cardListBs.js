@@ -13,6 +13,7 @@ const getBListWithSeriesData = async (request, response) => {
 
     include: [{
       model: models.SeriesDatas,
+      through: { attributes: [] }
     }]
   })
 
