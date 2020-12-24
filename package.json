@@ -7,7 +7,7 @@
     "dev": "env-cmd nodemon index.js",
     "dev:migrate": "env-cmd ./node_modules/.bin/sequelize db:migrate --env development --config ./config/sequelize.js",
     "eslint": "/node_modules/bin/eslint --format codeframe .",
-    "lint": "npm run eslint && npm run puglint", 
+    "lint": "npm run eslint && npm run puglint",
     "lint: fix": "/node_modules/bin/eslint --fix --format codeframe .",
     "puglint": "/node_modules/bin/pug-lint .",
     "test": "env-cmd ./node_modules/.bin/mocha tests/**/*.test.js"
@@ -35,6 +35,7 @@
     "env-cmd": "^10.1.0",
     "eslint": "^7.13.0",
     "mocha": "^8.2.1",
+    "mocha-cli": "^1.0.1",
     "nodemon": "^2.0.6",
     "sinon": "^9.2.2",
     "sinon-chai": "^3.5.0"

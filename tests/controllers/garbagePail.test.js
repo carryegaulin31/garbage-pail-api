@@ -13,6 +13,7 @@ const { expect } = chai
 
 describe('Controllers - teams', () => {
   let sandbox
+  let stubbedFindOne
   let stubbedSend
   let response
   let stubbedSendStatus
@@ -21,6 +22,8 @@ describe('Controllers - teams', () => {
 
   before(() => {
     sandbox = sinon.createSandbox()
+
+    stubbedFindOne = sandbox.stub(models.CardListA, models.CardListBs, models.SeriesDatas, 'findOne')
 
     stubbedSend = sandbox.stub()
     stubbedSendStatus = sandbox.stub()
