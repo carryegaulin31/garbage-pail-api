@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const { getAListWithSeriesData, getAKidByName, saveNewKid } = require('./controllers/cardListA')
-const { getAllBKids, getBListWithSeriesData, } = require('./controllers/cardListBs')
+const { getBKidByName, getBListWithSeriesData, } = require('./controllers/cardListBs')
 const { getAllSeriesData } = require('./controllers/seriesDatas')
 const app = express()
 
@@ -14,8 +14,8 @@ app.get('/', (request, response) => {
 })
 
 app.get('/aListSeries', getAListWithSeriesData)
-app.get('/:name', getAKidByName)
-app.get('/bList', getAllBKids)
+app.get('/A/:name', getAKidByName)
+app.get('/B/:name', getBKidByName)
 app.get('/blistSeries', getBListWithSeriesData)
 app.get('/series', getAllSeriesData)
 app.post('/garbagePail', bodyParser.json(), saveNewKid)

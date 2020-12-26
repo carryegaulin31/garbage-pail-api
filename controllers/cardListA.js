@@ -15,18 +15,18 @@ const getAListWithSeriesData = async (request, response) => {
 }
 
 const getAKidByName = async (request, response) => {
-  try {
-    const { name } = request.params
+  const { name } = request.params
+  const aKid = await models.CardListA.findOne({
+    where: {
+      name: { [models.Op.like]: `%${name}%` }
+    }
+  })
 
-    const aKid = await models.CardListA.findOne({ where: { name } })
-
-    return aKid
-      ? response.send(aKid)
-      : response.status(404).send('Sorry not found')
-  } catch (error) {
-    return response.status(500).send('Unable to retrieve')
-  }
+  return aKid
+    ? response.send(aKid)
+    : response.status(404).send('Sorry not found')
 }
+
 
 const saveNewKid = async (request, response) => {
   const {

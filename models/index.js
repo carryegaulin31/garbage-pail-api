@@ -38,4 +38,5 @@ module.exports = {
   CardASeriesLinkings,
   CardBSeriesLinkings,
   UserTables,
+  Op: Sequelize.Op
 }

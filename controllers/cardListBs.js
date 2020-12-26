@@ -1,13 +1,5 @@
 const models = require('../models')
 
-const getAllBKids = async (request, response) => {
-  const allBKids = await models.CardListBs.findAll()
-
-  return allBKids
-    ? response.send(allBKids)
-    : response.sendStatus(404)
-}
-
 const getBListWithSeriesData = async (request, response) => {
   const bListWithSeriesData = await models.CardListBs.findAll({
 
@@ -22,7 +14,20 @@ const getBListWithSeriesData = async (request, response) => {
     : response.sendStatus(404)
 }
 
+const getBKidByName = async (request, response) => {
+  const { name } = request.params
+  const bKid = await models.CardListBs.findOne({
+    where: {
+      name: { [models.Op.like]: `%${name}%` }
+    }
+  })
 
-module.exports = { getBListWithSeriesData, getAllBKids }
+  return bKid
+    ? response.send(bKid)
+    : response.status(404).send('Sorry not found')
+}
+
+
+module.exports = { getBListWithSeriesData, getBKidByName }
 
 
