@@ -32,12 +32,20 @@ const seriesDataMock = [{
   cardNo: '43'
 }]
 
-const singleKid = {
+const singleBKid = {
   name: 'Scary Carrie',
   list: 'B',
   seriesNo: '1',
   releaseDate: '1985',
   cardNo: '25'
+}
+
+const singleAKid = {
+  name: 'Wrinkly Randy',
+  list: 'A',
+  seriesNo: '1',
+  releaseDate: '1985',
+  cardNo: '35'
 }
 
 const newKid = {
@@ -48,4 +56,11 @@ const newKid = {
   cardNo: '43'
 }
 
-module.exports = { kidsListA, kidsListB, seriesDataMock, singleKid, newKid }
+module.exports = {
+  kidsListA,
+  kidsListB,
+  seriesDataMock,
+  singleAKid,
+  singleBKid,
+  newKid
+}
