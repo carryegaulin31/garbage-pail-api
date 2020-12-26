@@ -1,4 +1,5 @@
 const models = require('../models')
+
 const getAllSeriesData = async (request, response) => {
   const allSeriesData = await models.SeriesDatas.findAll()
 

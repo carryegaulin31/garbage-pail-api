@@ -1,13 +1,5 @@
 const models = require('../models')
 
-const getAllAKids = async (request, response) => {
-  const allAKids = await models.CardListA.findAll()
-
-  return allAKids
-    ? response.send(allAKids)
-    : response.sendStatus(404)
-}
-
 const getAListWithSeriesData = async (request, response) => {
   const aListWithSeriesData = await models.CardListBs.findAll({
 
@@ -20,6 +12,20 @@ const getAListWithSeriesData = async (request, response) => {
   return aListWithSeriesData
     ? response.send(aListWithSeriesData)
     : response.sendStatus(404)
+}
+
+const getAKidByName = async (request, response) => {
+  try {
+    const { name } = request.params
+
+    const aKid = await models.CardListA.findOne({ where: { name } })
+
+    return aKid
+      ? response.send(aKid)
+      : response.status(404).send('Sorry not found')
+  } catch (error) {
+    return response.status(500).send('Unable to retrieve')
+  }
 }
 
 const saveNewKid = async (request, response) => {
@@ -40,4 +46,4 @@ const saveNewKid = async (request, response) => {
 }
 
 
-module.exports = { getAllAKids, getAListWithSeriesData, saveNewKid }
+module.exports = { getAListWithSeriesData, getAKidByName, saveNewKid }

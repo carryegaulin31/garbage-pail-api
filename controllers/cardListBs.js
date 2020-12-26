@@ -22,24 +22,7 @@ const getBListWithSeriesData = async (request, response) => {
     : response.sendStatus(404)
 }
 
-const getKidByName = async (request, response) => {
-  try {
-    const { name } = request.params
 
-    const foundKid = await models.CardListA || models.CardListBs.findAll({
-      where: {
-        name: { [models.Op.like]: `%${name}%` },
-      }
-    })
-
-    return foundKid
-      ? response.send(foundKid)
-      : response.sendStatus(404)
-  } catch (error) {
-    return response.status(500).send('Unable to retrieve hero, please try again')
-  }
-}
-
-module.exports = { getBListWithSeriesData, getAllBKids, getKidByName }
+module.exports = { getBListWithSeriesData, getAllBKids }
 
 

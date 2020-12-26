@@ -4,14 +4,14 @@ const sinonChai = require('sinon-chai')
 const models = require('../../models')
 // const { describe, it } = require('mocha')
 const { kidsListA, kidsListB, newKid, seriesDataMock } = require('../mocks/garbagePail')
-const { getAllAKids, getAListWithSeriesData, saveNewKid } = require('./controllers/cardListA')
-const { getAllBKids, getBListWithSeriesData } = require('./controllers/cardListBs')
-const { getAllSeriesData } = require('./controllers/seriesDatas')
+const { getAllAKids, getAListWithSeriesData, saveNewKid } = require('../../controllers/cardListA')
+const { getAllBKids, getBListWithSeriesData } = require('../../controllers/cardListBs')
+const { getAllSeriesData } = require('../../controllers/seriesDatas')
 
 chai.use(sinonChai)
 const { expect } = chai
 
-describe('Controllers - teams', () => {
+describe('Controllers - cardListA', () => {
   let sandbox
   let stubbedFindOne
   let stubbedSend
