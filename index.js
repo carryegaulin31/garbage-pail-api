@@ -13,10 +13,10 @@ app.get('/', (request, response) => {
   return response.render('index')
 })
 
-app.get('/aListSeries', getAListWithSeriesData)
+app.get('/aList', getAListWithSeriesData)
 app.get('/A/:name', getAKidByName)
 app.get('/B/:name', getBKidByName)
-app.get('/blistSeries', getBListWithSeriesData)
+app.get('/blist', getBListWithSeriesData)
 app.get('/series', getAllSeriesData)
 app.post('/garbagePail', bodyParser.json(), saveNewKid)
 
