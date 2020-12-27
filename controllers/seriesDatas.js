@@ -11,19 +11,19 @@ const getAllSeriesData = async (request, response) => {
 const deleteKid = async (request, response) => {
   models.destroy({
     where: {
-      id: request.params.id
+      name: request.params.name
     }
   })
     .then(function (deletedRecord) {
       if (deletedRecord === 1) {
-        response.status(200).json({ message: "Deleted successfully" });
+        response.status(200).json({ message: ' Deleted successfully' })
       }
       else {
-        response.status(404).json({ message: "record not found" })
+        response.status(404).json({ message: 'record not found' })
       }
     })
     .catch(function (error) {
-      response.status(500).json(error);
+      response.status(500).json(error)
     })
 }
 
