@@ -1,43 +1,41 @@
 {
   "name": "garbage-pail-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "This A.P.I is for all you 80's kids that remember chewing every last piece of gum from each and every package of cards with eyes wide in astonishment. Before they were banned from your elementary school of course! Enjoy the trip down memory lane.",
   "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
   "scripts": {
-    "dev": "env-cmd nodemon index.js",
-    "dev:migrate": "env-cmd ./node_modules/.bin/sequelize db:migrate --env development --config ./config/sequelize.js",
-    "eslint": "/node_modules/bin/eslint --format codeframe .",
-    "lint": "npm run eslint && npm run puglint",
-    "lint: fix": "/node_modules/bin/eslint --fix --format codeframe .",
-    "puglint": "/node_modules/bin/pug-lint .",
+    "dev": "./node_modules/.bin/env-cmd ./node_modules/.bin/nodemon index.js",
+    "dev:migrate": "./node_modules/.bin/env-cmd ./node_modules/.bin/sequelize db:migrate --env development --config ./config/sequelize.js",
     "test": "./node_modules/.bin/env-cmd ./node_modules/.bin/mocha tests/**/*.test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/carryegaulin31/garbage-pail-api.git"
+    "url": "git+https://github.com/andyPiersonCodes/garbage-pail-api.git"
   },
-  "author": "Carrye Gaulin",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/carryegaulin31/garbage-pail-api/issues"
+    "url": "https://github.com/andyPiersonCodes/garbage-pail-api/issues"
   },
-  "homepage": "https://github.com/carryegaulin31/garbage-pail-api#readme",
+  "homepage": "https://github.com/andyPiersonCodes/garbage-pail-api#readme",
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "eslint": "^7.13.0",
+    "nodemon": "^2.0.6",
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "sinon": "^9.2.1",
+    "sinon-chai": "^3.5.0"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "mysql2": "^2.2.5",
     "pug": "^3.0.0",
-    "sequelize": "^6.3.5",
+    "sequelize": "^5.22.3",
     "sequelize-cli": "^6.2.0"
-  },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "env-cmd": "^10.1.0",
-    "eslint": "^7.13.0",
-    "mocha": "^8.2.1",
-    "mocha-cli": "^1.0.1",
-    "nodemon": "^2.0.6",
-    "sinon": "^9.2.2",
-    "sinon-chai": "^3.5.0"
   }
 }

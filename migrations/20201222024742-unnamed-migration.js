@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('cardListA', {
+    await queryInterface.createTable('cardListAs, {
       id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
       name: { type: Sequelize.STRING },
       list: { type: Sequelize.STRING },
@@ -79,6 +79,6 @@ module.exports = {
     await queryInterface.dropTable('seriesDatas')
     await queryInterface.dropTable('cardListBs')
 
-    return queryInterface.dropTable('cardListA')
+    return queryInterface.dropTable('cardListAs')
   }
 }

@@ -56,11 +56,20 @@ const newKid = {
   cardNo: '43'
 }
 
+const deleteKid = {
+  name: 'Wrinkly Randy',
+  list: 'A',
+  seriesNo: '1',
+  releaseDate: '1985',
+  cardNo: '35'
+}
+
 module.exports = {
   kidsListA,
   kidsListB,
   seriesDataMock,
   singleAKid,
   singleBKid,
+  deleteKid,
   newKid
 }

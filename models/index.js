@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const allConfigs = require('../config/sequelize')
-const CardListAModel = require('./cardListA')
+const CardListAModel = require('./cardListAs')
 const CardListBModel = require('./cardListBs')
 const SeriesDataModel = require('./seriesData')
 const CardASeriesLinkingModel = require('./cardASeriesLinkings')
@@ -15,16 +15,16 @@ const connection = new Sequelize(config.database, config.username, config.passwo
   host: config.host, dialect: config.dialect
 })
 
-const CardListA = CardListAModel(connection, Sequelize)
+const CardListAs = CardListAModel(connection, Sequelize)
 const CardListBs = CardListBModel(connection, Sequelize)
 const SeriesDatas = SeriesDataModel(connection, Sequelize)
-const CardASeriesLinkings = CardASeriesLinkingModel(connection, Sequelize, CardListA, SeriesDatas)
+const CardASeriesLinkings = CardASeriesLinkingModel(connection, Sequelize, CardListAs, SeriesDatas)
 const CardBSeriesLinkings = CardBSeriesLinkingModel(connection, Sequelize, CardListBs, SeriesDatas)
 const UserTables = UserTablesModel(connection, Sequelize)
 
-CardListA.belongsToMany(SeriesDatas, { through: CardASeriesLinkings })
+CardListAs.belongsToMany(SeriesDatas, { through: CardASeriesLinkings })
 CardListBs.belongsToMany(SeriesDatas, { through: CardBSeriesLinkings })
-CardASeriesLinkings.belongsTo(CardListA)
+CardASeriesLinkings.belongsTo(CardListAs)
 CardBSeriesLinkings.belongsTo(CardListBs)
 
 
@@ -32,7 +32,7 @@ CardBSeriesLinkings.belongsTo(CardListBs)
 
 
 module.exports = {
-  CardListA,
+  CardListAs,
   CardListBs,
   SeriesDatas,
   CardASeriesLinkings,

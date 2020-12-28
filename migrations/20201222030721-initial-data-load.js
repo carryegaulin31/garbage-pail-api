@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface) => {
-    await queryInterface.bulkInsert('cardListA', [
+    await queryInterface.bulkInsert('cardListAs', [
       { name: 'Nasty Nick', list: 'A' },
       { name: 'Junkfood John', list: 'A' },
       { name: 'Up Chuck', list: 'A' },
@@ -264,6 +264,6 @@ module.exports = {
     await queryInterface.bulkDelete('seriesDatas')
     await queryInterface.bulkDelete('cardListBs')
 
-    return queryInterface.bulkDelete('cardListA')
+    return queryInterface.bulkDelete('cardListAs')
   }
 }

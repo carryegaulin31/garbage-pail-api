@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable max-len */
+/* eslint-disable no-unused-vars */
 const chai = require('chai')
 const sinon = require('sinon')
 const sinonChai = require('sinon-chai')
@@ -5,11 +8,11 @@ const models = require('../../models')
 const {
   afterEach, before, beforeEach, after, describe, it
 } = require('mocha')
-// const { describe, it } = require('mocha')
+
 const {
   kidsListA, kidsListB, singleAKid, singleBKid, newKid, seriesDataMock
 } = require('../mocks/garbagePail')
-const { getAKidByName, getAListWithSeriesData, saveNewKid } = require('../../controllers/cardListA')
+const { getAKidByName, getAListWithSeriesData, saveNewKid } = require('../../controllers/cardListAs')
 const { getBKidByName, getBListWithSeriesData } = require('../../controllers/cardListBs')
 const { getAllSeriesData, deleteKid } = require('../../controllers/seriesDatas')
 
@@ -34,15 +37,14 @@ describe('Controllers - cardListA', () => {
 
   before(() => {
     sandbox = sinon.createSandbox()
-    stubbedcardListAFindOne = sandbox.stub(models.cardListA, 'findOne')
-    stubbedcardListAFindAll = sandbox.stub(models.cardListA, 'findAll')
-    stubbedcardListADestroy = sandbox.stub(models.cardListA, 'destroy')
-    stubbedseriesDatasDestroy = sandbox.stub(models.seriesDatas, 'destroy')
-    stubbedcardListBsFindOne = sandbox.stub(models.cardListBs, 'findOne')
-    stubbedcardListBsFindAll = sandbox.stub(models.cardListBs, 'findAll')
-    stubbedcardListBsDestroy = sandbox.stub(models.cardListBs, 'destroy')
-    stubbedseriesDatasFindAll = sandbox.stub(models.seriesDatas, 'findAll')
-    stubbedseriesDatasDestroy = sandbox.stub(models.seriesDatas, 'destroy')
+    stubbedcardListAFindAll = sandbox.stub(models.CardListAs, 'findAll')
+    stubbedcardListAFindOne = sandbox.stub(models.CardListAs, 'findOne')
+    stubbedcardListADestroy = sandbox.stub(models.CardListAs, 'destroy')
+    stubbedcardListBFindAll = sandbox.stub(models.CardListBs, 'findAll')
+    stubbedcardListBsFindOne = sandbox.stub(models.CardListBs, 'findOne')
+    stubbedcardListBDestroy = sandbox.stub(models.CardListBs, 'destroy')
+    stubbedseriesDatasFindAll = sandbox.stub(models.SeriesDatas, 'findAll')
+    stubbedcardListACreate = sandbox.stub(models.CardListAs, 'create')
     stubbedSend = sandbox.stub()
     stubbedSendStatus = sandbox.stub()
     stubbedStatusSend = sandbox.stub()
@@ -59,13 +61,11 @@ describe('Controllers - cardListA', () => {
   afterEach(() => {
     sandbox.reset()
   })
-  after(() => {
-    sandbox.restore()
-  })
+
   describe('Controllers - cardListA', () => {
     describe('getAListWithSeriesData', () => {
       it('retrieves a list of all A kids from the database and calls response.send() with the list', async () => {
-        stubbedcardListAFindAll = sinon.stub(models.cardListA, 'findAll').returns(kidsListA)
+        stubbedcardListAFindAll.returns(kidsListA)
         await getAListWithSeriesData({}, response)
         expect(stubbedcardListAFindAll).to.have.callCount(1)
         expect(stubbedSend).to.have.been.calledWith(kidsListA)
@@ -105,7 +105,8 @@ describe('Controllers - cardListA', () => {
       // eslint-disable-next-line max-len
       it('accepts new kid details and saves them as a new kid, returning the saved record with a 201 status', async () => {
         const request = { body: newKid }
-        const stubbedCreate = sinon.stub(models.userTables, 'create').returns(newKid)
+
+        stubbedCardListACreate.returns(newKid)
 
         await saveNewKid(request, response)
         expect(stubbedCreate).to.have.been.calledWith(newKid)
@@ -166,18 +167,22 @@ describe('Controllers - cardListA', () => {
         describe('deleteKid', () => {
           it('deletes a kid from the database.', async () => {
             stubbedcardListBsFindOne.returns(deleteKid)
+            const request = { params: { name: 'Wrinkly Randy' } }
+
             await deleteKid(request, response)
+
+            expect(stubbedcardListBDestroy).to.have.calledWith({ where: { name: request.params.name } })
             expect(stubbedSend).to.have.been.calledWith(`Successfully deleted the name: ${request.params.name}.`)
           })
           it('returns a 404 status and a message when no kid is found matching the id provided by the user.', async () => {
-            stubbedseriesDatasDestroy.returns(null)
+            stubbedcardListBsFindOne.returns(null)
             await deleteKid(request, response)
             expect(stubbedseriesDatasDestroy).to.have.callCount(0)
             expect(stubbedStatus).to.have.been.calledWith(404)
             expect(stubbedStatusSend).to.have.been.calledWith(`No matching kid with name: ${request.params.id}`)
           })
           it('returns a 500 status with a message when the database call throws an error.', async () => {
-            stubbedseriesDatasDestroy.throws('error')
+            stubbedcardListBsFindOne.throws('error')
             await deleteKid({}, response)
             expect(stubbedseriesDatasDestroy).to.have.callCount(0)
             expect(stubbedStatus).to.have.been.calledWith(500)

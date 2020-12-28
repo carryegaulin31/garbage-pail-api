@@ -9,7 +9,7 @@ const getAllSeriesData = async (request, response) => {
 }
 
 const deleteKid = async (request, response) => {
-  models.destroy({
+  models.SeriesData.destroy({
     where: {
       name: request.params.name
     }

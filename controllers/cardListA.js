@@ -1,7 +1,7 @@
 const models = require('../models')
 
 const getAListWithSeriesData = async (request, response) => {
-  const aListWithSeriesData = await models.CardListBs.findAll({
+  const aListWithSeriesData = await models.CardListAs.findAll({
 
     include: [{
       model: models.SeriesDatas,
@@ -15,18 +15,21 @@ const getAListWithSeriesData = async (request, response) => {
 }
 
 const getAKidByName = async (request, response) => {
-  const { name } = request.params
-  const aKid = await models.cardListA.findOne({
-    where: {
-      name: { [models.Op.like]: `%${name}%` }
-    }
-  })
+  try {
+    const { name } = request.params
+    const aKid = await models.CardListAs.findOne({
+      where: {
+        name: { [models.Op.like]: `%${name}%` }
+      }
+    })
 
-  return aKid
-    ? response.send(aKid)
-    : response.status(404).send('Sorry not found')
+    return aKid
+      ? response.send(aKid)
+      : response.status(404).send('Sorry not found')
+  } catch (error) {
+    return response.status(500).send('Unable to retrieve kid, please try again')
+  }
 }
-
 
 const saveNewKid = async (request, response) => {
   const {
