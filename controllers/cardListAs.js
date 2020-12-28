@@ -33,20 +33,21 @@ const getAKidByName = async (request, response) => {
 
 const saveNewKid = async (request, response) => {
   const {
-    name, list, seriesNo, releaseDate, cardNo
+    name, list
   } = request.body
 
-  if (!name || !list || !seriesNo || !releaseDate || !cardNo) {
+  if (!name || !list) {
     // eslint-disable-next-line max-len
-    return response.status(400).send('The following fields are required: location, mascot, abbreviation, conference, division')
+    return response.status(400).send('Must have name & list')
   }
   const newKid = await models.userTables.create({
-    name, list, seriesNo, releaseDate, cardNo
+    name, list
   })
   // eslint-disable-next-line max-len
 
   return response.status(201).send(newKid)
 }
+
 
 
 module.exports = { getAListWithSeriesData, getAKidByName, saveNewKid }

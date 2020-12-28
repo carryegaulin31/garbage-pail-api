@@ -8,24 +8,6 @@ const getAllSeriesData = async (request, response) => {
     : response.sendStatus(404)
 }
 
-const deleteKid = async (request, response) => {
-  models.SeriesData.destroy({
-    where: {
-      name: request.params.name
-    }
-  })
-    .then(function (deletedRecord) {
-      if (deletedRecord === 1) {
-        response.status(200).json({ message: ' Deleted successfully' })
-      }
-      else {
-        response.status(404).json({ message: 'record not found' })
-      }
-    })
-    .catch(function (error) {
-      response.status(500).json(error)
-    })
-}
 
 
-module.exports = { getAllSeriesData, deleteKid }
+module.exports = { getAllSeriesData }

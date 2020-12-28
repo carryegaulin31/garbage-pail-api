@@ -61,6 +61,9 @@ describe('Controllers - cardListA', () => {
   afterEach(() => {
     sandbox.reset()
   })
+  after(() => {
+    sandbox.restore()
+  })
 
   describe('Controllers - cardListA', () => {
     describe('getAListWithSeriesData', () => {
