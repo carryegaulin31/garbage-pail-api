@@ -16,7 +16,7 @@ const getAListWithSeriesData = async (request, response) => {
 
 const getAKidByName = async (request, response) => {
   const { name } = request.params
-  const aKid = await models.CardListA.findOne({
+  const aKid = await models.cardListA.findOne({
     where: {
       name: { [models.Op.like]: `%${name}%` }
     }
