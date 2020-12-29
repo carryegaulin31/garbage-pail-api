@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* eslint-disable max-len */
 const chai = require('chai')
 const sinon = require('sinon')
@@ -21,7 +20,6 @@ describe('Controllers - cardListBs', () => {
   let sandbox
   let stubbedSend
   let response
-  let request
   let stubbedSendStatus
   let stubbedStatusSend
   let stubbedStatus
@@ -33,9 +31,9 @@ describe('Controllers - cardListBs', () => {
 
   before(() => {
     sandbox = sinon.createSandbox()
-    stubbedcardListBFindAll = sandbox.stub(models.CardListBs, 'findAll')
-    stubbedcardListBsFindOne = sandbox.stub(models.CardListBs, 'findOne')
-    stubbedcardListBCreate = sandbox.stub(models.CardListBs, 'create')
+    stubbedCardListBsFindAll = sandbox.stub(models.CardListBs, 'findAll')
+    stubbedCardListBsFindOne = sandbox.stub(models.CardListBs, 'findOne')
+    stubbedCardListBsCreate = sandbox.stub(models.CardListBs, 'create')
     stubbedSend = sandbox.stub()
     stubbedSendStatus = sandbox.stub()
     stubbedStatusSend = sandbox.stub()
@@ -60,7 +58,7 @@ describe('Controllers - cardListBs', () => {
   describe('Controllers - cardListBs', () => {
     describe('getBListWithSeriesData', () => {
       it('retrieves a list of all the B kids from the database and calls response.send() with it', async () => {
-        stubbedCardListBsFindAll = sinon.stub(models.cardListBs, 'findAll').returns(kidsListB)
+        stubbedCardListBsFindAll.returns(kidsListB)
         await getBListWithSeriesData({}, response)
         expect(stubbedCardListBsFindAll).to.have.callCount(1)
         expect(stubbedSend).to.have.been.calledWith(kidsListB)
@@ -69,7 +67,7 @@ describe('Controllers - cardListBs', () => {
     describe('getBKidByName', () => {
       // eslint-disable-next-line max-len
       it('retrieves the kid associated with the provided name from the database and calls response.send with it', async () => {
-        stubbedcardListBsFindOne.returns(singleBKid)
+        stubbedCardListBsFindOne.returns(singleBKid)
         const request = { params: { name: 'Scary Carrie' } }
 
         await getBKidByName(request, response)
@@ -77,7 +75,7 @@ describe('Controllers - cardListBs', () => {
           where: { name: request.params.name },
           include: [{ model: models.SeriesDatas }],
         })
-        expect(stubbedSend).to.have.been.calledWith(singleBKid, { include: [(seriesDataMock)] })
+        expect(stubbedSend).to.have.been.calledWith(singleBKid)
       })
     })
     it('returns a 404 when no kid is found', async () => {
@@ -106,7 +104,7 @@ describe('Controllers - cardListBs', () => {
         stubbedCardListBsCreate.returns(newKid)
 
         await saveNewKid(request, response)
-        expect(stubbedCreate).to.have.been.calledWith(newKid)
+        expect(stubbedCardListBsCreate).to.have.been.calledWith(newKid)
         expect(stubbedStatus).to.have.been.calledWith(201)
         expect(stubbedStatusSend).to.have.been.calledWith(newKid)
       })

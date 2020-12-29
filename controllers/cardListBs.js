@@ -3,10 +3,10 @@ const models = require('../models')
 const getBListWithSeriesData = async (request, response) => {
   const bListWithSeriesData = await models.CardListBs.findAll({
 
-    include: [{
+    /* include: [{
       model: models.SeriesDatas,
       through: { attributes: [] }
-    }]
+    }] */
   })
 
   return bListWithSeriesData
@@ -39,7 +39,7 @@ const saveNewKid = async (request, response) => {
     // eslint-disable-next-line max-len
     return response.status(400).send('Must have name & list')
   }
-  const newKid = await models.userTables.create({
+  const newKid = await models.CardListBs.create({
     name, list
   })
   // eslint-disable-next-line max-len
