@@ -1,7 +1,7 @@
 const models = require('../models')
 
 const getUserTables = async (request, response) => {
-  const aListWithSeriesData = await models.CardListAs.findAll({
+  const userTables = await models.userTables.findAll({
 
     include: [{
       model: models.SeriesDatas,
@@ -9,15 +9,15 @@ const getUserTables = async (request, response) => {
     }]
   })
 
-  return aListWithSeriesData
-    ? response.send(aListWithSeriesData)
+  return userTables
+    ? response.send(userTables)
     : response.sendStatus(404)
 }
 
 const getUserByName = async (request, response) => {
   try {
     const { name } = request.params
-    const aKid = await models.CardListAs.findOne({
+    const aKid = await models.userTables.findOne({
       where: {
         name: { [models.Op.like]: `%${name}%` }
       }
