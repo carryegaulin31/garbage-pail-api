@@ -70,40 +70,44 @@ describe('Controllers - cardListAs', () => {
 
         await getAKidByName(request, response)
 
-        expect(stubbedCardListAsFindOne).to.have.been.calledWith({ where: { name: 'Wrinkly Randy' } })
+        expect(stubbedCardListAsFindOne).to.have.been.calledWith({
+          where: { name: request.params.name },
+        })
         expect(stubbedSend).to.have.been.calledWith(singleAKid)
       })
-      it('returns a 404 when no kid is found', async () => {
-        stubbedCardListAsFindOne.returns(null)
-        const request = { params: { name: 'not-found' } }
-
-        await getAKidByName(request, response)
-        expect(stubbedCardListAsFindOne).to.have.been.calledWith({ where: { name: 'not-found' } })
-        expect(stubbedStatus).to.have.been.calledWith(404)
-        expect(stubbedStatusSend).to.have.been.calledWith('Sorry not found')
-      })
-      it('returns a 500 with an error message when the database call throws an error', async () => {
-        stubbedCardListAsFindOne.throws('ERROR!')
-        const request = { params: { name: 'throw-error' } }
-
-        await getAKidByName(request, response)
-        expect(stubbedCardListAsFindOne).to.have.been.calledWith({ where: { name: 'throw-error' } })
-        expect(stubbedStatus).to.have.been.calledWith(500)
-        expect(stubbedStatusSend).to.have.been.calledWith('Unable to retrieve')
-      })
     })
-    describe('saveNewKid', () => {
-      // eslint-disable-next-line max-len
-      it('accepts new kid details and saves them as a new kid, returning the saved record with a 201 status', async () => {
-        const request = { body: newKid }
+    it('returns a 404 when no kid is found', async () => {
+      stubbedCardListAsFindOne.returns(null)
+      const request = { name: 'Sorry not found' }
 
-        stubbedCardListAsCreate.returns(newKid)
-
-        await saveNewKid(request, response)
-        expect(stubbedCardListAsCreate).to.have.been.calledWith(newKid)
-        expect(stubbedStatus).to.have.been.calledWith(201)
-        expect(stubbedStatusSend).to.have.been.calledWith(newKid)
+      await getAKidByName(request, response)
+      expect(stubbedCardListAsFindOne).to.have.been.calledWith({
+        where: { name: 'Sorry not found' }
       })
+      expect(stubbedStatus).to.have.been.calledWith(404)
+      expect(stubbedStatusSend).to.have.been.calledWith('Sorry not found')
+    })
+    it('returns a 500 with an error message when the database call throws an error', async () => {
+      stubbedCardListAsFindOne.throws('Unable to retrieve kid, please try again')
+      const request = { params: { name: 'throw-error' } }
+
+      await getAKidByName(request, response)
+      expect(stubbedCardListAsFindOne).to.have.been.calledWith({ where: { name: 'throw-error' } })
+      expect(stubbedStatus).to.have.been.calledWith(500)
+      expect(stubbedStatusSend).to.have.been.calledWith('Unable to retrieve kid, please try again')
+    })
+  })
+  describe('saveNewKid', () => {
+    // eslint-disable-next-line max-len
+    it('accepts new kid details and saves them as a new kid, returning the saved record with a 201 status', async () => {
+      const request = { body: newKid }
+
+      stubbedCardListAsCreate.returns(newKid)
+
+      await saveNewKid(request, response)
+      expect(stubbedCardListAsCreate).to.have.been.calledWith(newKid)
+      expect(stubbedStatus).to.have.been.calledWith(201)
+      expect(stubbedStatusSend).to.have.been.calledWith(newKid)
     })
   })
 })

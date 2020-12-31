@@ -18,9 +18,7 @@ const getBKidByName = async (request, response) => {
   try {
     const { name } = request.params
     const bKid = await models.CardListBs.findOne({
-      where: {
-        name: { [models.Op.like]: `%${name}%` }
-      }
+      where: { name }
     })
 
     return bKid

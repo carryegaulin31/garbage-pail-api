@@ -19,9 +19,7 @@ const getAKidByName = async (request, response) => {
   try {
     const { name } = request.params
     const aKid = await models.CardListAs.findOne({
-      where: {
-        name: { [models.Op.like]: `%${name}%` }
-      }
+      where: { name }
     })
 
     return aKid

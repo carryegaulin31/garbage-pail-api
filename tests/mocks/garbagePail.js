@@ -34,34 +34,22 @@ const seriesDataMock = [{
 
 const singleBKid = {
   name: 'Scary Carrie',
-  list: 'B',
-  seriesNo: '1',
-  releaseDate: '1985',
-  cardNo: '25'
+  list: 'B'
 }
 
 const singleAKid = {
   name: 'Wrinkly Randy',
-  list: 'A',
-  seriesNo: '1',
-  releaseDate: '1985',
-  cardNo: '35'
+  list: 'A'
 }
 
 const newKid = {
   name: 'Slob Rob',
-  list: 'B',
-  seriesNo: '1',
-  releaseDate: '1985',
-  cardNo: '43'
+  list: 'B'
 }
 
 const deleteKid = {
-  name: 'Wrinkly Randy',
-  list: 'A',
-  seriesNo: '1',
-  releaseDate: '1985',
-  cardNo: '35'
+  name: 'Slob Rob',
+  list: 'B'
 }
 
 module.exports = {

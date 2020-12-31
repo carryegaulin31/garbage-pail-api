@@ -51,7 +51,7 @@ describe('Controllers - cardListA', () => {
   describe('Controllers - seriesDatas', () => {
     describe('getAllSeriesData', () => {
       it('retrieves a list of all series data from the database and calls response.send() with the list', async () => {
-        stubbedSeriesDatasFindAll = sinon.stub(models.SeriesDatas, 'findAll').returns(seriesDataMock)
+        stubbedSeriesDatasFindAll.returns(seriesDataMock)
         await getAllSeriesData({}, response)
         expect(stubbedSeriesDatasFindAll).to.have.callCount(1)
         expect(stubbedSend).to.have.been.calledWith(seriesDataMock)

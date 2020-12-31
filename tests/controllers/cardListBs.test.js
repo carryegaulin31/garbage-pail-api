@@ -11,7 +11,7 @@ const {
   kidsListB, singleBKid, newKid
 } = require('../mocks/garbagePail')
 
-const { getBKidByName, getBListWithSeriesData } = require('../../controllers/cardListBs')
+const { getBKidByName, getBListWithSeriesData, saveNewKid } = require('../../controllers/cardListBs')
 
 chai.use(sinonChai)
 const { expect } = chai
@@ -73,7 +73,6 @@ describe('Controllers - cardListBs', () => {
         await getBKidByName(request, response)
         expect(stubbedCardListBsFindOne).to.have.been.calledWith({
           where: { name: request.params.name },
-          include: [{ model: models.SeriesDatas }],
         })
         expect(stubbedSend).to.have.been.calledWith(singleBKid)
       })
@@ -83,18 +82,18 @@ describe('Controllers - cardListBs', () => {
       const request = { params: { name: 'not-found' } }
 
       await getBKidByName(request, response)
-      expect(stubbedCardListBsFindOne).to.have.been.calledWith({ where: { name: 'not-found' } })
+      expect(stubbedCardListBsFindOne).to.have.been.calledWith({ name: 'not-found' })
       expect(stubbedStatus).to.have.been.calledWith(404)
       expect(stubbedStatusSend).to.have.been.calledWith('Sorry not found')
     })
     it('returns a 500 with an error message when the database call throws an error', async () => {
-      stubbedCardListBsFindOne.throws('ERROR!')
+      stubbedCardListBsFindOne.throws('Unable to retrieve kid, please try again')
       const request = { params: { name: 'throw-error' } }
 
       await getBKidByName(request, response)
       expect(stubbedCardListBsFindOne).to.have.been.calledWith({ where: { name: 'throw-error' } })
       expect(stubbedStatus).to.have.been.calledWith(500)
-      expect(stubbedStatusSend).to.have.been.calledWith('Unable to retrieve')
+      expect(stubbedStatusSend).to.have.been.calledWith('Unable to retrieve kid, please try again')
     })
     describe('saveNewKid', () => {
       // eslint-disable-next-line max-len
