@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('cardListAs, {
+    await queryInterface.createTable('cardListAs', {
       id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
       name: { type: Sequelize.STRING },
       list: { type: Sequelize.STRING },

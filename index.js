@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 const express = require('express')
 const bodyParser = require('body-parser')
-const { getAList, getAKidByName, saveNewKid } = require('./controllers/cardListAs')
-const { getBKidByName, getBList, } = require('./controllers/cardListBs')
+const { getAList, getAKidByName, saveNewKid, deleteAKid } = require('./controllers/cardListAs')
+const { getBKidByName, getBList } = require('./controllers/cardListBs')
 const { getAllSeriesData } = require('./controllers/seriesDatas')
 const app = express()
 
@@ -15,11 +15,12 @@ app.get('/', (request, response) => {
 })
 
 app.get('/aList', getAList)
-app.get('/A/:name', getAKidByName)
-app.get('/B/:name', getBKidByName)
+app.get('/a/:name', getAKidByName)
+app.get('/b/:name', getBKidByName)
 app.get('/blist', getBList)
 app.get('/series', getAllSeriesData)
 app.post('/garbagePail', bodyParser.json(), saveNewKid)
+app.delete('/garbagePail', deleteAKid)
 
 
 app.listen(1337, () => {
