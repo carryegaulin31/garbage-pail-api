@@ -1,16 +1,12 @@
 const models = require('../models')
 
-const getBListWithSeriesData = async (request, response) => {
-  const bListWithSeriesData = await models.CardListBs.findAll({
+const getBList = async (request, response) => {
+  const bList = await models.CardListBs.findAll({
 
-    /* include: [{
-      model: models.SeriesDatas,
-      through: { attributes: [] }
-    }] */
   })
 
-  return bListWithSeriesData
-    ? response.send(bListWithSeriesData)
+  return bList
+    ? response.send(bList)
     : response.sendStatus(404)
 }
 
@@ -47,4 +43,4 @@ const saveNewKid = async (request, response) => {
 
 
 
-module.exports = { getBListWithSeriesData, getBKidByName, saveNewKid }
+module.exports = { getBList, getBKidByName, saveNewKid }

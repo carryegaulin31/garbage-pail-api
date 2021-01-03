@@ -1,34 +1,27 @@
 const models = require('../models')
 
-const getAListWithSeriesData = async (request, response) => {
-  const aListWithSeriesData = await models.CardListAs.findAll({
+const getAList = async (request, response) => {
+  const aList = await models.CardListAs.findAll()
 
-    /* include: [{
-      model: models.SeriesDatas,
-      through: { attributes: [] }
-    }]
-  */
-  })
 
-  return aListWithSeriesData
-    ? response.send(aListWithSeriesData)
+  return aList
+    ? response.send(aList)
     : response.sendStatus(404)
 }
 
 const getAKidByName = async (request, response) => {
-  try {
-    const { name } = request.params
-    const aKid = await models.CardListAs.findOne({
-      where: { name }
-    })
+  const { name } = request.params
+  const aKid = await models.CardListAs.findOne({
+    where: {
+      name: { [models.Op.like]: `%${name}%` },
+    }
+  })
 
-    return aKid
-      ? response.send(aKid)
-      : response.status(404).send('Sorry not found')
-  } catch (error) {
-    return response.status(500).send('Unable to retrieve kid, please try again')
-  }
+  return aKid
+    ? response.send(aKid)
+    : response.status(500).send('Unable to retrieve kid, please try again')
 }
+
 
 const saveNewKid = async (request, response) => {
   const {
@@ -46,7 +39,22 @@ const saveNewKid = async (request, response) => {
 
   return response.status(201).send(newKid)
 }
+const deleteAKid = async (request, response) => {
+  try {
+    const isDeleted = await models.CardListAs.destroy({
+      where: {
+        name: request.params.name
+      }
+    })
+
+    return isDeleted === 1
+      ? response.status(200).json({ message: ' Deleted successfully' })
+      : response.status(404).json({ message: 'record not found' })
+  } catch (error) {
+    return response.status(500).json(error)
+  }
+}
 
 
 
-module.exports = { getAListWithSeriesData, getAKidByName, saveNewKid }
+module.exports = { getAList, getAKidByName, saveNewKid, deleteAKid }
