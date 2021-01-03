@@ -23,6 +23,8 @@ CardListAs.belongsToMany(SeriesDatas, { through: CardASeriesLinkings })
 CardListBs.belongsToMany(SeriesDatas, { through: CardBSeriesLinkings })
 CardASeriesLinkings.belongsTo(CardListAs)
 CardBSeriesLinkings.belongsTo(CardListBs)
+SeriesDatas.belongsToMany(CardListAs, { through: CardASeriesLinkings })
+SeriesDatas.belongsToMany(CardListBs, { through: CardBSeriesLinkings })
 
 
 
